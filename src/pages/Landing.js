@@ -15,11 +15,11 @@ function Landing() {
                     <h1>O Papai Noel aguarda seu pedido</h1>
                     <p>Escreva sua carta para o Papai Noel agora!</p>
                 </main>
-                <div className="location">
+                {/* <div className="location">
                     <Link to="/list" className="red-button">
                         Ver Cartas
                 </Link>
-                </div>
+                </div> */}
                 <Link to="/app" className="enter-app">
                     <FiArrowRight size={24} color="rgba(0, 0, 0, 0.6)" />
                 </Link>

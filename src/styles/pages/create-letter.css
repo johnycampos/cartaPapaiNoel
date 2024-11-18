@@ -1,116 +1,135 @@
 #page-create-letter {
-    display: flex;
-  }
-  
-  #page-create-letter main {
-    flex: 1;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Adiciona espaçamento para telas menores */
+}
+
+#page-create-letter main {
+  flex: 1;
+  width: 100%; /* Permite ocupar toda a largura em telas pequenas */
+  max-width: 900px; /* Mantém um limite para telas maiores */
+}
+
+form.create-letter-form {
+  width: 100%; /* Adapta para telas menores */
+  max-width: 700px;
+  margin: 32px auto; /* Reduzido para dispositivos menores */
+  background: #FFFFFF;
+  border: 1px solid #D3E2E5;
+  border-radius: 20px;
+  padding: 32px 40px; /* Reduzido para dispositivos menores */
+  overflow: hidden;
+}
+
+form.create-letter-form fieldset {
+  border: 0;
+}
+
+form.create-letter-form fieldset + fieldset {
+  margin-top: 40px; /* Reduzido para telas menores */
+}
+
+form.create-letter-form fieldset legend {
+  font-size: 24px; /* Reduzido para dispositivos menores */
+  line-height: 28px;
+  color: #5C8599;
+  font-weight: 700;
+  border-bottom: 1px solid #D3E2E5;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+}
+
+form.create-letter-form .input-block {
+  margin: 16px 0; /* Reduzido para dispositivos menores */
+}
+
+form.create-letter-form .input-block label {
+  display: flex;
+  color: #8FA7B3;
+  margin-bottom: 8px;
+  line-height: 24px;
+}
+
+form.create-letter-form .input-block label span {
+  font-size: 12px; /* Reduzido para dispositivos menores */
+  color: #8FA7B3;
+  margin-left: 16px;
+  line-height: 24px;
+}
+
+form.create-letter-form .input-block input,
+form.create-letter-form .input-block select,
+form.create-letter-form .input-block textarea {
+  width: 100%;
+  background: #F5F8FA;
+  border: 1px solid #D3E2E5;
+  border-radius: 20px;
+  outline: none;
+  color: #5C8599;
+  padding: 12px; /* Ajuste de padding */
+}
+
+form.create-letter-form .input-block select,
+form.create-letter-form .input-block input {
+  height: 56px; /* Reduzido para dispositivos menores */
+}
+
+form.create-letter-form .input-block textarea {
+  min-height: 100px;
+  max-height: 200px;
+  resize: vertical;
+  line-height: 24px;
+}
+
+form.create-letter-form .input-group {
+  display: flex;
+  flex-direction: column; /* Ajuste para dispositivos menores */
+  gap: 16px; /* Adiciona espaçamento entre os elementos */
+}
+
+form.create-letter-form button.confirm-button {
+  margin-top: 32px;
+  width: 100%;
+  height: 56px; /* Reduzido para dispositivos menores */
+  border: 0;
+  cursor: pointer;
+  background: #3CDC8C;
+  border-radius: 20px;
+  color: #FFFFFF;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+form.create-letter-form button.confirm-button:hover {
+  background: #36CF82;
+}
+
+/* Ajustes para dispositivos menores */
+@media (max-width: 768px) {
   form.create-letter-form {
-    width: 700px;
-    margin: 64px auto;
-  
-    background: #FFFFFF;
-    border: 1px solid #D3E2E5;
-    border-radius: 20px;
-  
-    padding: 64px 80px;
-  
-    overflow: hidden;
+      padding: 20px; /* Reduz ainda mais o padding */
   }
-  
-  form.create-letter-form fieldset {
-    border: 0;
-  }
-  
-  form.create-letter-form fieldset + fieldset {
-    margin-top: 80px;
-  }
-  
+
   form.create-letter-form fieldset legend {
-    width: 100%;
-  
-    font-size: 32px;
-    line-height: 34px;
-    color: #5C8599;
-    font-weight: 700;
-  
-    border-bottom: 1px solid #D3E2E5;
-    margin-bottom: 40px;
-    padding-bottom: 24px;
+      font-size: 20px; /* Reduz o tamanho da fonte */
   }
-  form.create-letter-form .input-block{
-    margin: 24px 0;
+
+  form.create-letter-form .input-group {
+      flex-direction: column; /* Mantém em coluna em telas menores */
   }
-  form.create-letter-form .input-block label {
-    display: flex;
-    color: #8FA7B3;
-    margin-bottom: 8px;
-    line-height: 24px;
-  }
-  
-  form.create-letter-form .input-block label span {
-    font-size: 14px;
-    color: #8FA7B3;
-    margin-left: 24px;
-    line-height: 24px;
-  }
-  
+
   form.create-letter-form .input-block input,
   form.create-letter-form .input-block select,
   form.create-letter-form .input-block textarea {
-    width: 100%;
-    background: #F5F8FA;
-    border: 1px solid #D3E2E5;
-    border-radius: 20px;
-    outline: none;
-    color: #5C8599;
-  }
-  
-  form.create-letter-form .input-block select,
-  form.create-letter-form .input-block input {
-    height: 64px;
-    padding: 0 16px;
-  }
-  
-  form.create-letter-form .input-block textarea {
-    min-height: 120px;
-    max-height: 240px;
-    resize: vertical;
-    padding: 16px;
-    line-height: 28px;
+      height: auto; /* Ajusta altura para dispositivos móveis */
+      padding: 8px; /* Reduz o padding interno */
   }
 
-  form.create-letter-form .input-group{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
   form.create-letter-form button.confirm-button {
-    margin-top: 64px;
-  
-    width: 100%;
-    height: 64px;
-    border: 0;
-    cursor: pointer;
-    background: #3CDC8C;
-    border-radius: 20px;
-    color: #FFFFFF;
-    font-weight: 800;
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    transition: background-color 0.2s;
+      height: 48px; /* Reduz a altura do botão */
   }
-  
-  form.create-letter-form button.confirm-button svg {
-    margin-right: 16px;
-  }
-  
-  form.create-letter-form button.confirm-button:hover {
-    background: #36CF82;
-  }
+}

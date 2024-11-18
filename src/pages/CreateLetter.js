@@ -107,7 +107,7 @@ function CreateLetter() {
 
     return (
         <div id="page-create-letter">
-            <Sidebar />
+            {/* <Sidebar /> */}
             <main>
                 <form onSubmit={handleOnSubmit} className="create-letter-form">
                     <fieldset>
