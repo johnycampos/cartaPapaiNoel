@@ -13,6 +13,9 @@ function CreateLetter() {
     const [state, setState] = useState("");
     const [city, setCity] = useState("");
     const [letter, setLetter] = useState("");
+    const [idade, setIdade] = useState("");
+    const [presente, setPresente] = useState("");
+
     const [whatsapp, setWhatsapp] = useState("");
     const [email, setEmail] = useState("");
 
@@ -73,27 +76,44 @@ function CreateLetter() {
 
     async function handleOnSubmit(e) {
         e.preventDefault();
+      
         const data = {
-            name,
-            state,
-            city,
-            letter,
-            email,
-            whatsapp,
+          name,
+          idade,
+          state,
+          city,
+          presente,
+          letter,
+        //   email,
+          whatsapp,
         };
-
-        if((!name)||(!state)||(!city)||(!letter)||(!email)){
-            return alert("Existem campos vazios.");
+      
+        if ((!name) || (!state) || (!city) || (!letter)) {
+          return alert("Existem campos vazios.");
         }
+      
+        try {
+            // const response = await fetch('http://localhost:3333/save-letter', {
 
-        try{
-            await api.post('letters', data);
+          const response = await fetch('https://cartapapainoelbackend.onrender.com/save-letter', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          });
+      
+          if (response.ok) {
+            alert('Cartinha salva com sucesso!');
             history.push('/result', true);
-        }catch(err){
-            history.push('/result', false);
+          } else {
+            alert('Erro ao salvar a cartinha!');
+          }
+        } catch (err) {
+          console.error('Erro na requisição:', err);
+          alert('Erro ao salvar a cartinha!');
         }
-
-    }
+      }
 
     function handleMask() {
         let value = whatsapp;
@@ -112,13 +132,22 @@ function CreateLetter() {
                 <form onSubmit={handleOnSubmit} className="create-letter-form">
                     <fieldset>
                         <legend>
-                            Dados
+                            Cartinha Para o Noel!!!
                         </legend>
                         <div className="input-block">
                             <label htmlFor="name">Nome</label>
                             <input id="name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="input-block">
+                            <label htmlFor="idade">Idade</label>
+                            <input id="idade"
+                                value={idade}
+                                maxLength={2}
+                                onChange={(e) => setIdade(e.target.value)}
                             />
                         </div>
 
@@ -155,7 +184,16 @@ function CreateLetter() {
                         </div>
 
                         <div className="input-block">
-                            <label htmlFor="letter">Cartinha <span>Máximo de 10.000 caracteres</span></label>
+                            <label htmlFor="presente">Qual presente você quer?<span>Escolha até 5!</span></label>
+                            <textarea id=""
+                                maxLength={10000}
+                                value={presente}
+                                onChange={(e) => setPresente(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="input-block">
+                            <label htmlFor="letter">Me conte algo que você gostaria que acontecesse ou um segredo? <span></span></label>
                             <textarea id="letter"
                                 maxLength={10000}
                                 value={letter}
@@ -173,12 +211,7 @@ function CreateLetter() {
                             />
                         </div>
 
-                        <div className="input-block">
-                            <label htmlFor="email">Email</label>
-                            <input id="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)} />
-                        </div>
+                        
 
 
                     </fieldset>
@@ -192,4 +225,11 @@ function CreateLetter() {
     );
 }
 
+// eslint-disable-next-line no-lone-blocks
+{/* <div className="input-block">
+                            <label htmlFor="email">Email</label>
+                            <input id="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)} />
+                        </div> */}
 export default CreateLetter;
